@@ -45,8 +45,10 @@ function onColorChange(event) {
 
 
 function onColorClick(event) {
-    ctx.strokeStyle = event.target.dataset.color;
-    ctx.fillStyle = event.target.dataset.color;
+	const newColor = event.target.dataset.color;
+	ctx.strokeStyle = newColor;
+	ctx.fillStyle = newColor;
+	color.value = newColor;
 }
 
 
