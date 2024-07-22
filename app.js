@@ -21,11 +21,13 @@ function onMouseDown(event) {
 	isPainting = true;
 }
 
-function onMouseUp() {
+function cancelPainting() {
 	isPainting = false;
 }
 
 
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", onMouseDown)
-canvas.addEventListener("mouseup", onMouseUp)
+canvas.addEventListener("mouseup", cancelPainting)
+//bug solving
+canvas.addEventListener("mouseleave", cancelPainting)
