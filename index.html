@@ -9,92 +9,125 @@
 		rel="stylesheet">
 	<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-	<!--3. Color picker-->
-	<div class="color-options">
-		<input id="color" type="color">
-		<div class="color-option" style="background-color: #e74c3c;" data-color="#e74c3c"></div>
-		<div class="color-option" style="background-color: #e67e22;" data-color="#e67e22"></div>
-		<div class="color-option" style="background-color: #f1c40f;" data-color="#f1c40f"></div>
-		<div class="color-option" style="background-color: #2ecc71;" data-color="#2ecc71"></div>
-		<div class="color-option" style="background-color: #16a085;" data-color="#16a085"></div>
-		<div class="color-option" style="background-color: #3498db;" data-color="#3498db"></div>
-		<div class="color-option" style="background-color: #2980b9;" data-color="#2980b9"></div>
-		<div class="color-option" style="background-color: #8e44ad;" data-color="#8e44ad"></div>
-		<div class="color-option" style="background-color: #2c3e50;" data-color="#2c3e50"></div>
-		<div class="color-option" style="background-color: #95a5a6;" data-color="#95a5a6"></div>
-	</div>
 
 	<!--1. Drawing borad-->
 	<canvas></canvas>
-	
-	<div class="btns">
 
+
+<div class="controllers">
+
+	<!--3. Color picker-->
+	<div class="color-options">
+		<input id="color" type="color">
+		<div class="color-row">
+			<div class="color-option" style="background-color: #e74c3c;" data-color="#e74c3c"></div>
+			<div class="color-option" style="background-color: #e67e22;" data-color="#e67e22"></div>
+			<div class="color-option" style="background-color: #f1c40f;" data-color="#f1c40f"></div>
+			<div class="color-option" style="background-color: #2ecc71;" data-color="#2ecc71"></div>
+			<div class="color-option" style="background-color: #16a085;" data-color="#16a085"></div>
+		</div>
+		<div class="color-row">
+			<div class="color-option" style="background-color: #3498db;" data-color="#3498db"></div>
+			<div class="color-option" style="background-color: #2980b9;" data-color="#2980b9"></div>
+			<div class="color-option" style="background-color: #8e44ad;" data-color="#8e44ad"></div>
+			<div class="color-option" style="background-color: #2c3e50;" data-color="#2c3e50"></div>
+			<div class="color-option" style="background-color: #95a5a6;" data-color="#95a5a6"></div>
+		</div>
+	</div>
+
+
+	<div class="btns">
 		<!--2. Line width modifier-->
-		<input id="line-width" type="range" min="1" max="10" value="5">
-		
+		<div class="line-width-container">
+			<input id="line-width" type="range" min="1" max="10" value="5">
+		</div>
+
 		<!--3. Draw button-->
-		<button id="draw-btn">Draw</button>
+		<div class="button-row">
+			<div class="button-items">
+				<button id="draw-btn">Draw</button>
+			</div>
 
 		<!--4. Color fill button-->
-		<button id="fill-btn">Fill</button>
+			<div class="button-items">
+				<button id="fill-btn">Fill</button>
+			</div>
 
 		<!--5. Rectangle button-->
-
+			<div class="button-items">
+				<button>Rectangle</button>
+			</div>
 
 		<!--5. Circle button-->
-
-		
+			<div class="button-items">
+				<button>Circle</button>
+			</div>
+		</div>
+	
 		<!--5. Destroy button-->
-		<button id="destroy-btn">Destroy</button>
-		
+		<div class="button-row">
+			<div class="button-items">
+				<button id="destroy-btn">Destroy</button>
+			</div>
+
 		<!--6. Eraser-->
-		<button id="eraser-btn">Eraser</button>
-		
+			<div class="button-items">
+				<button id="eraser-btn">Eraser</button>
+			</div>
+
 		<!--modify Add Photo button-->
-		<label for="file">
-			📁 Add photo
-			<!--7. Add image function-->
-			<input type="file" accept="image/*" id="file">
-		</label>
-
-
+			<div class="button-items">
+				<!--7. Add image function-->
+			<label for="file">Pics
+				<input type="file" accept="image/*" id="file">
+			</label>
+			</div>
 
 		<!--9. Save Image-->
-		<button id="save">🏞️ Save Image</button>
-
+			<div class="button-items">
+				<button id="save">Save</button>
+			</div>
+		</div>
 	</div>
 
 
 	<div class="texts">
-		<!---0. Changing Font size-->
-		<input type="number" min="1" max="300" value="25" id="fontSizes">
-
-		<!--0. Changing Font family -->
-		<select id="fontTypes" autocomplete="off" required>
-			<option value="'Arial'" style="font-family: Arial;">Arial</option>
-			<option value="'Georgia'" style="font-family: Georgia;">Georgia</option>
-			<option value="'serif'" style="font-family: serif">Serif</option>
-			<option value="'sans-serif" style="font-family: sans-serif">Sans-serif</option>
-			<option value="'Bona Nova SC', serif" style="font-family: Bona Nova SC">Bona Nova SC</option>
-			<option value="'Oleo Script', system-ui" style="font-family: Oleo Script">Oleo Script</option>
-			<option value="'Nanum Gothic Coding', monospace" style="font-family: Nanum Gothic Coding">Nanum Gothic Coding</option>
-			<option value="'Playwrite BE VLG', cursive" style="font-family: Playwrite BE VLG">Playwrite BE VLG</option>
-			<option value="'Edu AU VIC WA NT Hand', cursive" style="font-family: Edu AU VIC WA NT Hand">Edu AU VIC WA NT Hand</option>
-			<option value="'Jua', sans-serif" style="font-family: Jua">Jua</option>
-			<option value="'Noto Serif KR', serif" style="font-family: Noto Serif KR">Noto Serif KR</option>
-			<option value="'Stylish', serif" style="font-family: Stylish">Stylish</option>
-		</select>
-
-		<!--0. Change Font Weight-->
-		<select id="fontWeights">
-			<option value="bold">Bold</option>
-			<option value="normal">Normal</option>
-		</select>
-
 		<!--8. Text Stamp-->
 		<input type="text" placeholder="Add text here... :) " id="text">
+		
+		<!--0. Changing Font family -->
+		<div class="text-controls">
+
+			<!--0. Changing Font size-->
+			<input type="number" min="1" max="300" value="25" id="fontSizes">
+
+			<!--0. Changing Font Type-->
+			<select id="fontTypes" autocomplete="off" required>
+				<option value="'Arial'" style="font-family: Arial;">Arial</option>
+				<option value="'Georgia'" style="font-family: Georgia;">Georgia</option>
+				<option value="'serif'" style="font-family: serif">Serif</option>
+				<option value="'sans-serif" style="font-family: sans-serif">Sans-serif</option>
+				<option value="'Bona Nova SC', serif" style="font-family: Bona Nova SC">Bona Nova SC</option>
+				<option value="'Oleo Script', system-ui" style="font-family: Oleo Script">Oleo Script</option>
+				<option value="'Nanum Gothic Coding', monospace" style="font-family: Nanum Gothic Coding">Nanum Gothic Coding</option>
+				<option value="'Playwrite BE VLG', cursive" style="font-family: Playwrite BE VLG">Playwrite BE VLG</option>
+				<option value="'Edu AU VIC WA NT Hand', cursive" style="font-family: Edu AU VIC WA NT Hand">Edu AU VIC WA NT Hand</option>
+				<option value="'Jua', sans-serif" style="font-family: Jua">Jua</option>
+				<option value="'Noto Serif KR', serif" style="font-family: Noto Serif KR">Noto Serif KR</option>
+				<option value="'Stylish', serif" style="font-family: Stylish">Stylish</option>
+			</select>
+
+			<!--0. Change Font Weight-->
+			<select id="fontWeights">
+				<option value="bold">Bold</option>
+				<option value="normal">Normal</option>
+			</select>
+
+		</div>
 	</div>
+</div>
 
 <script src="app.js"></script>
 	
