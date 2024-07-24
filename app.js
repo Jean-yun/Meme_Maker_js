@@ -15,11 +15,10 @@ const textInput = document.getElementById("text")
 const fontSizes = document.getElementById("fontSizes");
 const fontTypes = document.getElementById("fontTypes");
 const fontWeights = document.getElementById("fontWeights");
+const textBtn = document.getElementById("text-btn")
 
-
-
-const CANVAS_WIDTH = 800;
-const CANVAS_HEIGHT = 800;
+const CANVAS_WIDTH = 700;
+const CANVAS_HEIGHT = 700;
 
 canvas.width = CANVAS_WIDTH;
 canvas.height = CANVAS_HEIGHT;
@@ -30,6 +29,7 @@ ctx.lineCap = "round"
 
 let isPainting = false;
 let isFilling = false;
+let isTexting = false;
 
 function onMove(event) {
 	if (isPainting) {
@@ -70,7 +70,8 @@ function onColorClick(event) {
 
 function onPenClick(event) {
 	isFilling = false;
-	isPainting = true;
+	isPainting = false;
+	isTexting = false;
 }
 
 //Filling the entrie canvas 
@@ -109,15 +110,16 @@ function onFileChange(event) {
 }
 
 //text stamp (save, restore)
-function onDoubleClick(event) {
+function onTextStamp(event) {
 	const text = textInput.value;
 	const textWeight = fontWeights.value;
     const textSize = fontSizes.value;
 	const textFont = fontTypes.value;
 	//save previous value and revert back (save function)
 	//saves current color, style, everything (svae & restore)
-	if (text !== "") {
+	if (text !== "" && isTexting) {
 		ctx.save();
+		
 		ctx.lineWidth = 1;
 		ctx.font = `${textWeight} ${textSize}px ${textFont}`;
 		ctx.fillText(text, event.offsetX, event.offsetY)
@@ -143,8 +145,8 @@ canvas.addEventListener("mouseleave", cancelPainting)
 
 //Fill, draw mode
 canvas.addEventListener("click", onCanvasClick)
-//Text stamp when double clicked
-canvas.addEventListener("dblclick", onDoubleClick)
+//Text stamp when clicked
+canvas.addEventListener("click", onTextStamp)
 //lineWidth change tracker
 lineWidth.addEventListener("change", onLineWidthChange)
 //color change tracker
@@ -160,7 +162,15 @@ drawBtn.addEventListener("click", onPenClick)
 
 //Fill button 
 fillBtn.addEventListener("click", function () {
-	isFilling = true
+	isFilling = true;
+	isTexting = false;
+	canvas.style.cursor = "defualt";
+})
+
+textBtn.addEventListener("click", function () {
+	isFilling = false;
+	isPainting = false;
+	isTexting = true;
 })
 
 //Destroy button
