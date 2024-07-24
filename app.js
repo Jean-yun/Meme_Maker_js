@@ -8,8 +8,14 @@ const modeBtn = document.getElementById("mode-btn")
 const destroyBtn = document.getElementById("destroy-btn")
 const eraseBtn = document.getElementById("eraser-btn")
 const fileInput = document.getElementById("file")
-const textInput = document.getElementById("text")
 const saveBtn = document.getElementById("save")
+//Font size, Font Family
+const textInput = document.getElementById("text")
+const fontSizes = document.getElementById("fontSizes");
+const fontTypes = document.getElementById("fontTypes");
+const fontWeights = document.getElementById("fontWeights");
+
+
 
 const CANVAS_WIDTH = 800;
 const CANVAS_HEIGHT = 800;
@@ -107,14 +113,17 @@ function onFileChange(event) {
 //text stamp (save, restore)
 function onDoubleClick(event) {
 	const text = textInput.value;
+	const textWeight = fontWeights.value;
+    const textSize = fontSizes.value;
+	const textFont = fontTypes.value;
 	//save previous value and revert back (save function)
 	//saves current color, style, everything (svae & restore)
 	if (text !== "") {
-	ctx.save();
-	ctx.lineWidth = 1;
-	ctx.font = "70px serif"
-	ctx.fillText(text, event.offsetX, event.offsetY)
-	ctx.restore();
+		ctx.save();
+		ctx.lineWidth = 1;
+		ctx.font = `${textWeight} ${textSize}px ${textFont}`;
+		ctx.fillText(text, event.offsetX, event.offsetY)
+		ctx.restore();
 	}
 }
 
@@ -161,3 +170,6 @@ fileInput.addEventListener("change", onFileChange)
 
 //Save Button
 saveBtn.addEventListener("click", onSaveClick)
+
+//Change Font Family
+// fontFamily.addEventListener("change", onFontChange)

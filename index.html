@@ -4,6 +4,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Meme Maker</title>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&family=Jua&family=Nanum+Gothic+Coding&family=Noto+Serif+KR:wght@200..900&family=Oleo+Script:wght@400;700&family=Playwrite+BE+VLG:wght@100..400&family=Stylish&family=Yeon+Sung&display=swap"
+		rel="stylesheet">
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -46,14 +49,43 @@
 			<input type="file" accept="image/*" id="file">
 		</label>
 
-		<!--8. Text Stamp-->
-		<input type="text" placeholder="Add text here... :) " id="text">
-		
+
+
 		<!--9. Save Image-->
 		<button id="save">🏞️ Save Image</button>
 
 	</div>
 
+
+	<div class="texts">
+		<!---0. Changing Font size-->
+		<input type="number" min="1" max="300" value="25" id="fontSizes">
+
+		<!--0. Changing Font family -->
+		<select id="fontTypes" autocomplete="off" required>
+			<option value="'Arial'" style="font-family: Arial;">Arial</option>
+			<option value="'Georgia'" style="font-family: Georgia;">Georgia</option>
+			<option value="'serif'" style="font-family: serif">Serif</option>
+			<option value="'sans-serif" style="font-family: sans-serif">Sans-serif</option>
+			<option value="'Bona Nova SC', serif" style="font-family: Bona Nova SC">Bona Nova SC</option>
+			<option value="'Oleo Script', system-ui" style="font-family: Oleo Script">Oleo Script</option>
+			<option value="'Nanum Gothic Coding', monospace" style="font-family: Nanum Gothic Coding">Nanum Gothic Coding</option>
+			<option value="'Playwrite BE VLG', cursive" style="font-family: Playwrite BE VLG">Playwrite BE VLG</option>
+			<option value="'Edu AU VIC WA NT Hand', cursive" style="font-family: Edu AU VIC WA NT Hand">Edu AU VIC WA NT Hand</option>
+			<option value="'Jua', sans-serif" style="font-family: Jua">Jua</option>
+			<option value="'Noto Serif KR', serif" style="font-family: Noto Serif KR">Noto Serif KR</option>
+			<option value="'Stylish', serif" style="font-family: Stylish">Stylish</option>
+		</select>
+
+		<!--0. Change Font Weight-->
+		<select id="fontWeights">
+			<option value="bold">Bold</option>
+			<option value="normal">Normal</option>
+		</select>
+
+		<!--8. Text Stamp-->
+		<input type="text" placeholder="Add text here... :) " id="text">
+	</div>
 
 <script src="app.js"></script>
 	
