@@ -4,7 +4,8 @@ const ctx = canvas.getContext("2d");
 const lineWidth = document.getElementById("line-width");
 const color = document.getElementById("color");
 const colorOptions = Array.from(document.getElementsByClassName("color-option"));
-const modeBtn = document.getElementById("mode-btn")
+const drawBtn = document.getElementById("draw-btn")
+const fillBtn = document.getElementById("fill-btn")
 const destroyBtn = document.getElementById("destroy-btn")
 const eraseBtn = document.getElementById("eraser-btn")
 const fileInput = document.getElementById("file")
@@ -66,20 +67,17 @@ function onColorClick(event) {
 	color.value = newColor;
 }
 
-function onModeClick(event) {
-	if (isFilling) {
-		isFilling = false;
-		modeBtn.innerText = "Fill"
-	} else {
-		isFilling = true;
-		modeBtn.innerText = "Draw"
-	}
+
+function onPenClick(event) {
+	isFilling = false;
+	isPainting = true;
 }
 
 //Filling the entrie canvas 
 function onCanvasClick() {
 	if (isFilling) {
-	ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT)}
+		ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT)
+	}
 }
 
 //Added alert (confirm) to recheck destroy
@@ -156,8 +154,14 @@ color.addEventListener("change", onColorChange)
 //colorOption change tracker
 colorOptions.forEach(option => option.addEventListener("click", onColorClick));
 
-//Mode change 
-modeBtn.addEventListener("click", onModeClick)
+
+//Draw button 
+drawBtn.addEventListener("click", onPenClick)
+
+//Fill button 
+fillBtn.addEventListener("click", function () {
+	isFilling = true
+})
 
 //Destroy button
 destroyBtn.addEventListener("click", onDestroyClick)
@@ -171,5 +175,3 @@ fileInput.addEventListener("change", onFileChange)
 //Save Button
 saveBtn.addEventListener("click", onSaveClick)
 
-//Change Font Family
-// fontFamily.addEventListener("change", onFontChange)
