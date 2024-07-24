@@ -7,15 +7,8 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-	<!--1. Drawing borad-->
-	<canvas></canvas>
-	
-	<!--2. Line width modifier-->
-	<input id="line-width" type="range" min="1" max="10" value="5">
-
 	<!--3. Color picker-->
-	<div>
+	<div class="color-options">
 		<input id="color" type="color">
 		<div class="color-option" style="background-color: #e74c3c;" data-color="#e74c3c"></div>
 		<div class="color-option" style="background-color: #e67e22;" data-color="#e67e22"></div>
@@ -26,28 +19,42 @@
 		<div class="color-option" style="background-color: #3498db;" data-color="#3498db"></div>
 		<div class="color-option" style="background-color: #2980b9;" data-color="#2980b9"></div>
 		<div class="color-option" style="background-color: #8e44ad;" data-color="#8e44ad"></div>
-		<div class="color-option" style="background-color: #34495e;" data-color="#34495e"></div>
 		<div class="color-option" style="background-color: #2c3e50;" data-color="#2c3e50"></div>
 		<div class="color-option" style="background-color: #95a5a6;" data-color="#95a5a6"></div>
 	</div>
 
-	<!--4. Color fill button-->
-	<button id="mode-btn">Fill</button>
+	<!--1. Drawing borad-->
+	<canvas></canvas>
 	
-	<!--5. Destroy button-->
-	<button id="destroy-btn">Destroy</button>
+	<div class="btns">
 
-	<!--6. Eraser-->
-	<button id="eraser-btn">Erase</button>
+		<!--2. Line width modifier-->
+		<input id="line-width" type="range" min="1" max="10" value="5">
+		
+		<!--4. Color fill button-->
+		<button id="mode-btn">🩸 Fill</button>
+		
+		<!--5. Destroy button-->
+		<button id="destroy-btn">💣 Destroy</button>
+		
+		<!--6. Eraser-->
+		<button id="eraser-btn">❌ Erase</button>
+		
+		<!--modify Add Photo button-->
+		<label for="file">
+			📁 Add photo
+			<!--7. Add image function-->
+			<input type="file" accept="image/*" id="file">
+		</label>
 
-	<!--7. Add image function-->
-	<input type="file" accept="image/*" id="file"> 
+		<!--8. Text Stamp-->
+		<input type="text" placeholder="Add text here... :) " id="text">
+		
+		<!--9. Save Image-->
+		<button id="save">🏞️ Save Image</button>
 
-	<!--8. Text Stamp-->
-	<input type="text" placeholder="Write and then Double click" id="text">
+	</div>
 
-	<!--9. Save Image-->
-	<button id="save">Save Image</button>
 
 <script src="app.js"></script>
 	
