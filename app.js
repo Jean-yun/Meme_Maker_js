@@ -7,6 +7,8 @@ const colorOptions = Array.from(document.getElementsByClassName("color-option"))
 const modeBtn = document.getElementById("mode-btn")
 const destroyBtn = document.getElementById("destroy-btn")
 const eraseBtn = document.getElementById("eraser-btn")
+const fileInput = document.getElementById("file")
+const textInput = document.getElementById("text")
 
 const CANVAS_WIDTH = 800;
 const CANVAS_HEIGHT = 800;
@@ -15,7 +17,8 @@ canvas.width = CANVAS_WIDTH;
 canvas.height = CANVAS_HEIGHT;
 ctx.lineWidth = lineWidth.value;
 ctx.strokeStyle = color.value;
-
+//line corner style
+ctx.lineCap = "round"
 
 let isPainting = false;
 let isFilling = false;
@@ -83,20 +86,50 @@ function onEraserClick() {
 	modeBtn.innerText = "Fill"
 }
 
+function onFileChange(event) {
+	//Calling image as URL
+	const file = event.target.files[0];
+	const url = URL.createObjectURL(file);
+	console.log(url);
+	//showing image 
+	const image = new Image();
+	image.src = url;
+	image.onload = function () {
+		ctx.drawImage(image, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT)
+	};
+	fileInput.value = null;
+}
+
+//text stamp (save, restore)
+function onDoubleClick(event) {
+	const text = textInput.value;
+	//save previous value and revert back (save function)
+	//saves current color, style, everything (svae & restore)
+	if (text !== "") {
+	ctx.save();
+	ctx.lineWidth = 1;
+	ctx.font = "70px serif"
+	ctx.fillText(text, event.offsetX, event.offsetY)
+	ctx.restore();
+	}
+}
+
+canvas.onmousemove = onMove
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", onMouseDown)
 canvas.addEventListener("mouseup", cancelPainting)
 //bug solving
 canvas.addEventListener("mouseleave", cancelPainting)
+
 //Fill, draw mode
 canvas.addEventListener("click", onCanvasClick)
-
-
+//Text stamp when double clicked
+canvas.addEventListener("dblclick", onDoubleClick)
 //lineWidth change tracker
 lineWidth.addEventListener("change", onLineWidthChange)
-
 //color change tracker
 color.addEventListener("change", onColorChange)
+
 
 //colorOption change tracker
 colorOptions.forEach(option => option.addEventListener("click", onColorClick));
@@ -109,3 +142,6 @@ destroyBtn.addEventListener("click", onDestroyClick)
 
 //Erase button
 eraseBtn.addEventListener("click", onEraserClick)
+
+//File input 
+fileInput.addEventListener("change", onFileChange)
